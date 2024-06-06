@@ -1,0 +1,8 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Welcome to the Digital Library!</h1>
+  <p>Please sign up or log in to access the resources.</p>
+  <a href="{% url 'signup' %}">Sign Up</a> | <a href="{% url 'login' %}">Log In</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{%load static}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Digital Library{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Digital Library</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'resource_list' %}">Resource List</a></li>
+            {% if user.is_authenticated %}
+                {% if user.userprofile.is_lecturer %}
+                    <li><a href="{% url 'upload_resource' %}">Upload Resource</a></li>
+                {% endif %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+   
+   
+   
+   <footer>
+        <p>My Site © 2024</p>
+    </footer>
+</body>
+</html>
